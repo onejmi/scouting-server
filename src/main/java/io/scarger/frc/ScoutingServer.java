@@ -20,7 +20,6 @@ public class ScoutingServer {
         System.out.println("Scouting server running on " + address);
         port(port);
         get("/", (req, res) -> increase());
-        get("/test", (req, res) -> "case sensitive?");
         get("/qrcode", (req, res) -> {
             res.header("Content-Type", "image/jpeg");
             return rawQRCode;
