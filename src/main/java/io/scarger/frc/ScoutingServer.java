@@ -16,7 +16,7 @@ public class ScoutingServer {
     public static void main(String[] args) throws IOException {
         QRCodeGenerator qrCodeGenerator = new QRCodeGenerator();
         String address = InetAddress.getLocalHost().getHostAddress() + ":" + port;
-        byte[] rawQRCode = qrCodeGenerator.generateQRCode(address);
+        byte[] rawQRCode = qrCodeGenerator.generateQRCode("https://" +  address);
         System.out.println("Scouting server running on " + address);
         port(port);
         get("/", (req, res) -> increase());
@@ -27,7 +27,6 @@ public class ScoutingServer {
     }
 
     private static String increase() {
-        System.out.println("PING");
         return Integer.toString(++counter);
     }
 }
